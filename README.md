@@ -1,5 +1,5 @@
 # Terminal Chess
-Terminal based chess engine. Used to play against different level computer. Input moves using algebraic notation (i.e. Be5, Nxf3)
+Terminal based chess engine. Used to play against different level computer. Input moves using Coordinate Notation (i.e. e2e4, b1c3, c3e4)
 
 Features: 
 - Choose color
