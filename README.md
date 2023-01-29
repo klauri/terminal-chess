@@ -1,4 +1,4 @@
-# Chess App
+# Terminal Chess
 Terminal based chess engine. Used to play against different level computer. Input moves using algebraic notation (i.e. Be5, Nxf3)
 
 Features: 
