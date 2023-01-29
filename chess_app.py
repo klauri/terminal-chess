@@ -25,13 +25,23 @@ if __name__ == '__main__':
     game_running = True
 
     print('Welcome to Chess!')
-
+    print('\n\n')
+    print('Capital letters represent White, lowercase represent Black')
+    print('\n')
     print('Input your moves in Coordinate Notation')
     print('Example: \"e2e4\"')
 
+    print('\n\n')
+    print('Type \'help\' for the top 3 moves.')
+    print('\n\n')
     input('Press Enter to start a new game...')
 
     board = Board(binary_path='/usr/games/stockfish')
+
+    elo_rating = input('Please type in your ELO rating: ')
+    board.stockfish.set_elo_rating(elo_rating)
+
+    board.get_pos()
 
     while game_running:
         print(board.turn)
@@ -39,14 +49,16 @@ if __name__ == '__main__':
 
         new_move = input('Move: ')
 
+        if new_move == 'help':
+            print(board.get_top_moves(3))
+
         check_move = board.check_move(new_move)
         if not check_move: 
             print('Invald move! Try again. ')
         else:
             board.input_move(new_move)
             board.get_pos()
-            sleep(5)
+            print('Waiting for opponent...')
             board.make_cpu_move()
             board.get_pos()
 
-            
