@@ -36,14 +36,16 @@ if __name__ == '__main__':
     print('\n\n')
     input('Press Enter to start a new game...')
 
-    board = Board(binary_path='/usr/games/stockfish')
+    players = input('1 or 2 players?: ')
 
-    elo_rating = input('Please type in your ELO rating: ')
-    board.stockfish.set_elo_rating(elo_rating)
+    if players != '1' and players != '2': print('Please enter 1 or 2. ')
+
+    board = Board(binary_path='/usr/games/stockfish', num_players=players)
 
     board.get_pos()
 
     while game_running:
+        
         print(board.turn)
         new_move = ''
 
@@ -58,7 +60,8 @@ if __name__ == '__main__':
         else:
             board.input_move(new_move)
             board.get_pos()
-            print('Waiting for opponent...')
-            board.make_cpu_move()
-            board.get_pos()
+            if board.num_players == '1':
+                print('Waiting for opponent...')
+                board.make_cpu_move()
+                board.get_pos()                
 
